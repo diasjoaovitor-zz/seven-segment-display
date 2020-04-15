@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven-segment Display</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            text-align: center;
+            font-family: cursive;
+            background-color: #E6E6E6;
+        }
+
+        header, footer {
+            background-color: #404040;
+            color: #E6E6E6;
+            width: 100%;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .display {
+            background-color: #ccc;
+            padding: 10% 20%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+        }
+
+        #top {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            border: solid;
+            border-width: 10px 10px 5px;
+            background-color: #eFeFef;
+        }
+
+        #bottom {
+            width: 100px;
+            height: 100px;
+            margin: auto;
+            border: solid;
+            border-width: 5px 10px 10px;
+            background-color: #eFeFef;
+        }
+
+        button {
+            border: none;
+            outline: none;
+            width: 30px;
+            height: 30px;
+            margin-top: 20px;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+
+        @media screen and (min-width: 375px) {
+            .display {
+                padding: 10% 15%;
+            }
+
+            #top {
+                width: 130px;
+                height: 130px;
+             }
+
+            #bottom {
+                width: 130px;
+                height: 130px;
+            }
+
+            button {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media screen and (min-height: 730px) {
+            .display {
+                padding: 15% 15%;
+            }
+        }
+
+        @media screen and (min-width: 700px) {
+            .display {
+                padding: 5% 20%;
+            }
+
+            #top {
+                width: 150px;
+                height: 150px;
+             }
+
+            #bottom {
+                width: 150px;
+                height: 150px;
+            }
+
+            button {
+                width: 50px;
+                height: 50px;
+            }
+        }
+    </style>
+</head>
+<body onload="booleanEquations()">
+    <header>
+        <h1>7-segment Display</h1>
+    </header>
+
+    <main>
+        <div class="display">
+            <div id="top"></div>
+             <div id="bottom"></div>
+    
+            <div class="buttons" onclick="booleanEquations()">
+                <button id="b8">0</button>
+                <button id="b4">0</button>
+                <button id="b2">0</button>
+                <button id="b1">0</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Created By João Vitor Dias</p>
+    </footer>
+
+    <script>
+        var b1 = document.getElementById('b1')
+        var b2 = document.getElementById('b2')
+        var b4 = document.getElementById('b4')
+        var b8 = document.getElementById('b8')
+
+        var b1Press = 0
+        var b2Press = 0
+        var b4Press = 0
+        var b8Press = 0
+
+        var A = false
+        var B = false
+        var C = false
+        var D = false
+
+        var onButton = '#878787'
+        var offButton = '#e6e6e6'
+
+        function pressButton1() {
+            if(b1Press%2 == 0) {
+                b1.style.background = onButton
+                b1Press -= 1
+                D = true
+                b1.innerText = '1'
+            } else {
+                b1.style.background = offButton
+                b1Press -=1
+                D = false
+                b1.innerText = '0'
+            }
+        }
+        
+      function pressButton2() {
+            if(b2Press%2 == 0) {
+                b2.style.background = onButton
+                b2Press -= 1
+                C = true
+                b2.innerText = '1'
+            } else {
+                b2.style.background = offButton
+                b2Press -=1
+                C = false
+                b2.innerText = '0'
+            }
+        }
+            
+       function pressButton4() {
+            if(b4Press%2 == 0) {
+                b4.style.background = onButton
+                b4Press -= 1
+                B = true
+                b4.innerText = '1'
+            } else {
+                b4.style.background = offButton
+                b4Press -=1
+                B = false
+                b4.innerText = '0'
+            }
+        }
+
+        function pressButton8() {
+            if(b8Press%2 == 0) {
+                b8.style.background = onButton
+                b8Press -= 1
+                A = true
+                b8.innerText = '1'
+            } else {
+                b8.style.background = offButton
+                b8Press -=1
+                A = false
+                b8.innerText = '0'
+            }
+        }
+
+        
+        
+        function booleanEquations() {
+            var top = document.getElementById('top')
+            var bottom = document.getElementById('bottom')
+
+            var onDisplay = '#FF0000'
+            var offDisplay = '#e6e6e6'
+
+            var a = (!A && C || B && C || !B && !D || C &&!D || A && !C && !D || A && !B && !C || !A && B && D) 
+            var b = (!A && !B || !B && !D || A && !C && D || !A && C && D || !A && !C && !D)
+            var c = (A && !B || !A && B || !A && !C || !A && D || !C && D)
+            var d = (A && !C || !A && !B && !D || B && C && !D || B && !C && D || !B && C && D)
+            var e = (A && B || A && C || !B && !D || C && !D )
+            var f = (A && !B || A && C || B && !D || !C && !D || !A && B && !C)
+            var g = (A && !B || A && D || C && !D || !A && B && !C || !A && !B && C || !B && C)
+
+            if(a)
+                top.style.borderTopColor = onDisplay
+            else 
+                top.style.borderTopColor = offDisplay
+            
+            if(b)
+                top.style.borderRightColor = onDisplay
+            else 
+                top.style.borderRightColor = offDisplay
+
+            if(c)
+                bottom.style.borderRightColor = onDisplay
+            else 
+                bottom.style.borderRightColor = offDisplay
+            
+            if(d)
+                bottom.style.borderBottomColor = onDisplay
+            else 
+                bottom.style.borderBottomColor = offDisplay
+
+            if(e)
+                bottom.style.borderLeftColor = onDisplay
+            else 
+                bottom.style.borderLeftColor = offDisplay
+
+            if(f)
+                top.style.borderLeftColor = onDisplay
+            else 
+                top.style.borderLeftColor = offDisplay
+            
+            if(g) {
+                top.style.borderBottomColor = onDisplay
+                bottom.style.borderTopColor = onDisplay
+            } else {
+                top.style.borderBottomColor = offDisplay
+                bottom.style.borderTopColor = offDisplay
+            }
+        }
+
+        b1.onclick = pressButton1
+        b2.onclick = pressButton2
+        b4.onclick = pressButton4
+        b8.onclick = pressButton8
+    </script>
+</body>
+</html>

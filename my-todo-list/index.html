@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My To Do List</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: cursive;
+        }
+
+        .checked {
+            text-decoration: line-through;
+            border: none;
+        }
+
+        body {
+            text-align: center;
+            background-color: #fdfdfd;
+        }
+
+        header {
+            width: 90%;
+            border-bottom: 2px solid #B3B3B3;
+            margin: 15px auto 15px;
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            color: #595959;
+        }
+
+        main {
+            width: 80%;
+            margin: auto;
+            background-color: #fefefe;
+        }
+
+        main input {
+            width: 150px;
+            height: 30px;
+            border: none;
+            outline: none;
+            border-bottom: 1px solid #B3B3B3;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+
+        main button {
+            width: 40px;
+            height: 30px;
+            border: none;
+            outline: none;
+            background-color: #8C8C8C;
+            color: #f9f9f9;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        button:hover {
+            background-color: #595959;
+        }
+
+        main ul {
+            text-align: left;
+            margin: 20px 15px 0;
+        }
+
+        main ul li {
+            list-style-position: inside;
+            margin-bottom: 10px;
+        }
+
+        li span {
+            border-bottom: 1px solid #B3B3B3;
+        }
+
+        li i {
+            float: right;
+            background-color: #f4f4f4;
+            margin-left: 8px;
+            cursor: pointer;
+            transition: .5s;
+        }
+
+        i:hover {
+            background-color: #bfbfbf;
+        }
+
+        footer {
+            width: 90%;
+            border-top: 2px solid #B3B3B3;
+            margin: 100px auto 0;
+        }
+
+        footer p {
+            margin-top: 10px;
+            color: #595959;
+        }
+
+        @media screen and (min-width: 500px) {
+            main input {
+                width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>My To Do List</h1>
+    </header>
+
+    <main>
+        <input type="text" placeholder="To Do">
+        <button>Add</button>
+
+        <ul> </ul>
+    </main>
+
+    <footer>
+        <p>Created By João Vitor</p>
+    </footer>
+
+    <script>
+        let inputElement = document.querySelector('input')
+        let addToDo = document.querySelector('button')
+        
+        let toDoList = JSON.parse(localStorage.getItem('toDoList')) || []
+
+        function renderToDos() {
+            let ulElement = document.querySelector('ul')
+
+            ulElement.innerHTML = ''
+
+            for(toDo of toDoList) {
+                let liElement = document.createElement('li')
+                let iconRemoveToDo = document.createElement('i')
+                let iconCheckToDo = document.createElement('i')
+                let toDoText = document.createTextNode(toDo)
+
+                let spanElement = document.createElement('span')
+
+                iconRemoveToDo.classList.add("material-icons")
+                iconCheckToDo.classList.add("material-icons")
+                iconCheckToDo.setAttribute('id', 'checkToDo')
+
+                let iconCodeRemove = document.createTextNode("remove")
+                let inconCodeCheck = document.createTextNode("check")
+           
+                let a = toDoList.indexOf(toDo)
+
+                iconRemoveToDo.setAttribute('onclick', 'removeToDos(' + a + ')')
+
+                iconRemoveToDo.appendChild(iconCodeRemove)
+                liElement.appendChild(iconRemoveToDo)
+
+                liElement.addEventListener('click', function(ev) {
+                    if (ev.target.id == 'checkToDo') 
+                        spanElement.classList.toggle('checked')
+                }, false);
+
+                iconCheckToDo.appendChild(inconCodeCheck)
+                liElement.appendChild(iconCheckToDo)
+    
+                spanElement.appendChild(toDoText)
+                liElement.appendChild(spanElement)
+                ulElement.appendChild(liElement)
+            }
+        }
+
+        function addToDos() {
+            let toDo = inputElement.value
+            toDoList.push(toDo)
+            inputElement.value = ''
+            inputElement.focus()
+            renderToDos()
+            saveToStorage()
+        }
+
+        function removeToDos(pos) {
+            toDoList.splice(pos, 1)
+            renderToDos()
+            saveToStorage()
+        }
+
+        function saveToStorage() {
+            localStorage.setItem('toDoList', JSON.stringify(toDoList))
+        }
+
+        addToDo.onclick = addToDos 
+
+        renderToDos()
+    </script>
+</body>
+</html>

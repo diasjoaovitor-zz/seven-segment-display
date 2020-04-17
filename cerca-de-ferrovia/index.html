@@ -175,7 +175,7 @@
             let sentenceValue = sentence.value.toUpperCase().replace(/\s/g,'')
 
             let initialHalf = sentenceValue.length/2
-            initialHalf = Math.round(initialHalf)
+            initialHalf = Math.ceil(initialHalf)
             let finalHalf = sentenceValue.length - initialHalf
 
             for(let a = 0; a < initialHalf; a++) 
@@ -191,7 +191,7 @@
             }
 
             if(sentenceValue.length%2 != 0)
-                modifiedSentence.pop(0)
+                modifiedSentence.pop()
 
             result.innerHTML = ''
 

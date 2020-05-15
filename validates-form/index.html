@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valida Formulário</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    main {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-right: -50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    main form fieldset legend {
+      font-size: 24px;
+    }
+
+    main form p {
+      margin: 20px auto;
+      position: relative;
+    }
+
+    main form input {
+      width: 80%;
+      height: 40px;
+      padding-left: 10px;
+      font-size: 16px;
+    }
+
+    main form button {
+      width: 30%;
+      height: 40px;
+      font-size: 16px;
+    }
+
+    div.error {
+      color: #f00;
+      font-size: 12px;
+      position: absolute;
+      left: 11%;
+    }
+    
+    </style>
+</head>
+<body>
+  <main>
+    <form action="">
+      <fieldset>
+        <legend>Preencha o Formulário</legend>
+
+        <p><input type="text" placeholder="Nome Completo*" id="full-name"></p>
+        <p><input type="text" placeholder="CPF*" id="cpf"></p>
+        <p><input type="email" placeholder="Email*"></p>
+        <p><input type="text" placeholder="Usuário*" id="user"></p>
+        <p><input type="password" placeholder="Senha*" id="password" class="passwordInput"></p>
+        <p><input type="password" placeholder="Repita sua senha*" id="password-repeat" class="passwordInput"></p>
+
+        <p><button type="submit">Enviar</button></p>
+      </fieldset>
+    </form>
+    <!--<form action="">
+      <fieldset>
+        <legend>Preencha o Formulário</legend>
+
+        <p><input type="text" placeholder="Nome Completo*" id="full-name" required minlength="10" maxlength="40"></p>
+        <p><input type="text" placeholder="CPF*" id="cpf" required minlength="11" maxlength="14"></p>
+        <p><input type="email" placeholder="Email*" required></p>
+        <p><input type="text" placeholder="Usuário*" id="user" required minlength="3" maxlength="12"></p>
+        <p><input type="password" placeholder="Senha*" id="password" required minlength="6" maxlength="12"></p>
+        <p><input type="password" placeholder="Repita sua senha*" id="password-repeat" required minlength="6" maxlength="12"></p>
+
+        <p><button type="submit">Enviar</button></p>
+      </fieldset>
+    </form>-->
+  </main>
+
+  <script src="cpf.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

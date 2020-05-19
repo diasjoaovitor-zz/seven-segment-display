@@ -9,5 +9,5 @@ projetos feitos com base no curso Starter da Rocketseat, sendo o my-todo-list da
 Curso JavaScript, e o list-repositories da segunda etapa, Curso JavaScript ES6.
 link: https://skylab.rocketseat.com.br/journey/starter
 ------------------------------------------------------------------
-#Projeto => validates-form: projeto feito com base no Curso de JavaScript Moderno do básico ao avançado - 2020, disponível na Udemy. link: https://www.udemy.com/course/curso-de-javascript-moderno-do-basico-ao-avancado/
+#Projetos => validates-form, cpf-analyzer: projetos feitos com base no Curso de JavaScript Moderno do básico ao avançado - 2020, disponível na Udemy. link: https://www.udemy.com/course/curso-de-javascript-moderno-do-basico-ao-avancado/
 ------------------------------------------------------------------

@@ -1,13 +1,7 @@
-# Starter-JavaScript
-Projetos nível iniciante, focados em desenvolver a lógica de programação. 
-As tecnologias usadas nos projetos desse repositório são: HTML, CSS e JS
+# Seven Segment Display
 
-Referências:
-------------------------------------------------------------------
-#Projetos => my-todo-list, list-repositories: 
-projetos feitos com base no curso Starter da Rocketseat, sendo o my-todo-list da primeira etapa, 
-Curso JavaScript, e o list-repositories da segunda etapa, Curso JavaScript ES6.
-link: https://skylab.rocketseat.com.br/journey/starter
-------------------------------------------------------------------
-#Projetos => validates-form, cpf-analyzer: projetos feitos com base no Curso de JavaScript Moderno do básico ao avançado - 2020, disponível na Udemy. link: https://www.udemy.com/course/curso-de-javascript-moderno-do-basico-ao-avancado/
-------------------------------------------------------------------
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/43608067/103301075-49d28480-49df-11eb-9c0a-000a01dc73a0.png" width="500">
+</p>
+
+Simulação de um display de 7 segmentos. 
